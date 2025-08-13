@@ -1,0 +1,119 @@
+#██╗░░░░░░█████╗░███╗░░██╗░██████╗░██████╗░░█████╗░██████╗░███████╗██████╗░
+#██║░░░░░██╔══██╗████╗░██║██╔════╝░██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔══██╗
+#██║░░░░░██║░░██║██╔██╗██║██║░░██╗░██████╔╝███████║██████╔╝█████╗░░██████╔╝
+#██║░░░░░██║░░██║██║╚████║██║░░╚██╗██╔═══╝░██╔══██║██╔═══╝░██╔══╝░░██╔══██╗
+#███████╗╚█████╔╝██║░╚███║╚██████╔╝██║░░░░░██║░░██║██║░░░░░███████╗██║░░██║
+#╚══════╝░╚════╝░╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝░░╚═╝╚═╝░░░░░╚══════╝╚═╝░░╚═╝
+
+#Placeholders Globais:
+# %player_nickname -> nickname
+# %message_content -> conteúdo da mensagem
+# %sender -> quem está mandando a mensagem
+# %recipient -> quem está recebendo a mensagem
+# %recipeName -> nome da receita
+# %amount -> quantidade de item
+
+plugin:
+  disableHelloMessage: false
+  autoUpdate: false
+
+events:
+  playerJoin:
+    message:
+      enabled: true
+      customMessage:
+        enabled: true
+        message: "&aBem-vindo(a) &e%player_nickname"
+
+  playerQuit:
+    message:
+      enabled: true
+      customMessage:
+        enabled: true
+        message: "&e%player_nickname &cSaiu do servidor"
+
+  playerChat:
+    customChat:
+      enabled: true
+      globalChatPrefix: "!"
+      localChat: "&7[&7&lLocal&7] &e%player_nickname &a>> &f%message_content"
+      globalChat: "&7[&7&lGlobal&7] &e%player_nickname &a>> &f%message_content"
+
+commands:
+  config:
+    soundOnUse: true
+    openSound: entity.experience_orb.pickup
+    closeSound: block.anvil.place
+
+  msg:
+    enabled: true
+    permission: longpaper.commands.player.msg
+    sender: "&bVocê &a-> &e%recipient &f: &7%message_content"
+    recipient: "&b%sender &a-> &eVocê &f: &7%message_content"
+
+  lanterna:
+    enabled: true
+    permission: longpaper.commands.player.lanterna
+    onEnableMessage: "&aVocê ligou sua lanterna!"
+    onDisableMessage: "&cVocê desativou sua lanterna!"
+
+  reloadConfig:
+    enabled: true
+    permission: longpaper.commands.admin.reloadconfig
+    onUseMessage: "&aAs configurações do &6config.yml &aforam recarregadas com sucesso!"
+
+  lixeira:
+    enabled: true
+    permission: longpaper.commands.player.lixeira
+    onUseMessage: "&aVocê abriu sua lixeira"
+    interfaceTitle: "&cLixeira"
+    slots: 36
+
+  aquecer:
+    enabled: true
+    permission: longpaper.commands.player.aquecer
+    onUseMessage: "&aVocê esquentou &e&lx%amount &aitens"
+    invalidItemMessage: "&cVocê não está segurando um item válido!"
+    customItemsInsufficientMessage: "&cItens insuficientes, você precisa de &ex%amount &cdeste item para fazer &e%recipeName"
+    custom:
+      WHEAT:
+        recipeName: "Pão Quente"
+        message: "&aVocê assou trigo e recebeu pão"
+        amount: 3
+        result: BREAD
+        resultAmount: 1
+        lore:
+          - "Pão quentinho feito no forno"
+          - "Ao comer você ganha 15 segundos de velocidade"
+      POTATO:
+        recipeName: "Batata Frita"
+        message: "&aVocê assou batata e fez uma deliciosa batata frita."
+        amount: 1
+        result: BAKED_POTATO
+        resultAmount: 1
+        lore:
+          - "Batata Frita"
+          - "Nham Nham, tragam mais catchup!"
+    items:
+      COAL_ORE: COAL
+      DEEPSLATE_COAL_ORE: COAL
+      IRON_ORE: IRON_INGOT
+      DEEPSLATE_IRON_ORE: IRON_INGOT
+      COPPER_ORE: COPPER_INGOT
+      DEEPSLATE_COPPER_ORE: COPPER_INGOT
+      GOLD_ORE: GOLD_INGOT
+      NETHER_GOLD_ORE: GOLD_INGOT
+      DEEPSLATE_GOLD_ORE: GOLD_INGOT
+      REDSTONE_ORE: REDSTONE
+      DEEPSLATE_REDSTONE_ORE: REDSTONE
+      EMERALD_ORE: EMERALD
+      DEEPSLATE_EMERALD_ORE: EMERALD
+      LAPIS_ORE: LAPIS_LAZULI
+      DEEPSLATE_LAPIS_ORE: LAPIS_LAZULI
+      DIAMOND_ORE: DIAMOND
+      DEEPSLATE_DIAMOND_ORE: DIAMOND
+      NETHER_QUARTZ_ORE: QUARTZ
+      RAW_IRON: IRON_INGOT
+      RAW_COPPER: COPPER_INGOT
+      RAW_GOLD: GOLD_INGOT
+      ANCIENT_DEBRIS: NETHERITE_SCRAP

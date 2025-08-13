@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="LongPaper:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/LongPaper_jar</output-path>
+    <root id="archive" name="LongPaper.jar">
+      <element id="module-output" name="LongPaper" />
+    </root>
+  </artifact>
+</component>

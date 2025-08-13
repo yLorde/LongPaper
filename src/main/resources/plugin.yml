@@ -1,0 +1,10 @@
+name: LongPaper
+version: '1.1'
+main: br.com.ylorde.Main
+api-version: '1.21'
+load: STARTUP
+authors: [ "yLorde", "Luccas Person" ]
+description: Um plugin feito para complementar as funcionabilidades padrão do seu servidor.
+website: https://www.ylorde.com.br
+softdepend:
+  - LuckPerms
