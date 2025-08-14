@@ -8,8 +8,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -35,9 +33,8 @@ public class BigornaCommand {
                 player.playSound(player, Objects.requireNonNull(plugin.getConfig().getString("commands.config.openSound")), 1,1 );
             }
 
-            Inventory inventory = Bukkit.createInventory(player, InventoryType.ANVIL);
+            player.openAnvil(player.getLocation(), true);
 
-            player.openInventory(inventory);
             player.sendMessage(convertToColoredText.convert(
                     Objects.requireNonNull(plugin.getConfig().getString("commands.bigorna.onUseMessage"))
             ));

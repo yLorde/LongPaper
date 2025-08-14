@@ -10,8 +10,8 @@ import io.papermc.paper.command.brigadier.Commands;
 import java.util.Objects;
 
 public record CustomRecipesCMD(Main plugin) {
-    public LiteralCommandNode<CommandSourceStack> build() {
-        return Commands.literal("customRecipes")
+    public LiteralCommandNode<CommandSourceStack> build(String customName) {
+        return Commands.literal(customName)
                 .then(Commands.literal("craft")
                         .requires(sender -> sender.getSender().hasPermission(
                                 Objects.requireNonNull(plugin.getConfig().getString("commands.customRecipes.craft.permission"))
@@ -23,7 +23,6 @@ public record CustomRecipesCMD(Main plugin) {
                                 Objects.requireNonNull(plugin.getConfig().getString("commands.customRecipes.furnace.permission"))
                         ))
                         .executes(CustomFurnaceRecipe::execute)
-                )
-                .build();
+                ).build();
     }
 }

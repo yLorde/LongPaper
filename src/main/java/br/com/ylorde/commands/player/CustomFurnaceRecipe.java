@@ -1,13 +1,11 @@
 package br.com.ylorde.commands.player;
 
-import br.com.ylorde.holders.FurnaceGui;
 import br.com.ylorde.utils.Console;
 import br.com.ylorde.utils.ConvertToColoredText;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.context.CommandContext;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
@@ -42,7 +40,7 @@ public class CustomFurnaceRecipe {
             List<String> list = new ArrayList<>();
 
             for (int i = 0; i < 999999; i++) {
-                String material = plugin.getConfig().getString("commands.customRecipes.furnace.list."+String.valueOf(i)+".material");
+                String material = plugin.getConfig().getString("commands.customRecipes.furnace.list." + String.valueOf(i) + ".material");
                 if (material == null) {
                     break;
                 } else {
@@ -57,8 +55,11 @@ public class CustomFurnaceRecipe {
             if (list.size() > 36) slots = 45;
             if (list.size() > 45) slots = 54;
 
-            FurnaceGui gui = new FurnaceGui(slots, Objects.requireNonNull(plugin.getConfig().getString("commands.customRecipes.furnace.interfaceTitle")));
-            Inventory menu = gui.getInventory();
+            Inventory menu = Bukkit.createInventory(
+                    player,
+                    slots,
+                    Objects.requireNonNull(plugin.getConfig().getString("commands.customRecipes.furnace.interfaceTitle"))
+            );
 
             for (int i = 0; i < list.size() + 1; i++) {
                 String materialA = plugin.getConfig().getString("commands.customRecipes.furnace.list." + i + ".material");
@@ -90,7 +91,7 @@ public class CustomFurnaceRecipe {
             player.openInventory(menu);
 
             if (plugin.getConfig().getBoolean("commands.config.soundOnUse")) {
-                player.playSound(player, Objects.requireNonNull(plugin.getConfig().getString("commands.config.openSound")), 1,1);
+                player.playSound(player, Objects.requireNonNull(plugin.getConfig().getString("commands.config.openSound")), 1, 1);
             }
             player.sendMessage(convertToColoredText.convert(
                     Objects.requireNonNull(plugin.getConfig().getString("commands.customRecipes.furnace.onUseMessage"))

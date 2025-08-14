@@ -9,12 +9,10 @@ import io.papermc.paper.command.brigadier.Commands;
 import java.util.Objects;
 
 public record LixeiraCMD(Main plugin) {
-    public LiteralCommandNode<CommandSourceStack> build() {
-        return Commands.literal("lixeira")
+    public LiteralCommandNode<CommandSourceStack> build(String commandName) {
+        return Commands.literal(commandName)
                 .requires(sender -> sender.getSender().hasPermission(
                         Objects.requireNonNull(plugin.getConfig().getString("commands.lixeira.permission"))
-                ))
-                .executes(LixeiraCommand::execute)
-                .build();
+                )).executes(LixeiraCommand::execute).build();
     }
 }

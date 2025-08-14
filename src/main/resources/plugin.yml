@@ -8,3 +8,4 @@ description: Um plugin feito para complementar as funcionabilidades padrão do s
 website: https://www.ylorde.com.br
 softdepend:
   - LuckPerms
+  - Vault

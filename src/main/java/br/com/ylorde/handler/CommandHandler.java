@@ -14,25 +14,25 @@ public record CommandHandler(Main plugin) {
     public void handle() {
         this.plugin.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, commands -> {
             if (plugin.getConfig().getBoolean("commands.lanterna.enabled"))
-                commands.registrar().register(new LanternaCMD(plugin).build());
+                commands.registrar().register(new LanternaCMD(plugin).build("lanterna"));
 
             if (plugin.getConfig().getBoolean("commands.reloadConfig.enabled"))
-                commands.registrar().register(new ReloadConfigCMD(plugin).buid());
+                commands.registrar().register(new ReloadConfigCMD(plugin).buid("reloadconfig"));
 
             if (plugin.getConfig().getBoolean("commands.aquecer.enabled"))
-                commands.registrar().register(new AquecerCMD(plugin).build());
+                commands.registrar().register(new AquecerCMD(plugin).build("aquecer"));
 
             if (plugin.getConfig().getBoolean("commands.lixeira.enabled"))
-                commands.registrar().register(new LixeiraCMD(plugin).build());
+                commands.registrar().register(new LixeiraCMD(plugin).build("lixeira"));
 
             if (plugin.getConfig().getBoolean("commands.customRecipes.enabled"))
-                commands.registrar().register(new CustomRecipesCMD(plugin).build());
+                commands.registrar().register(new CustomRecipesCMD(plugin).build("customRecipes"));
 
             if (plugin.getConfig().getBoolean("commands.craft.enabled"))
-                commands.registrar().register(new CraftCMD(plugin).build());
+                commands.registrar().register(new CraftCMD(plugin).build("craft"));
 
             if (plugin.getConfig().getBoolean("commands.bigorna.enabled"))
-                commands.registrar().register(new BigornaCMD(plugin).build());
+                commands.registrar().register(new BigornaCMD(plugin).build("bigorna"));
         });
     }
 }

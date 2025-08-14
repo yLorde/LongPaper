@@ -9,12 +9,10 @@ import io.papermc.paper.command.brigadier.Commands;
 import java.util.Objects;
 
 public record AquecerCMD(Main plugin) {
-    public LiteralCommandNode<CommandSourceStack> build() {
-        return Commands.literal("aquecer")
+    public LiteralCommandNode<CommandSourceStack> build(String commandName) {
+        return Commands.literal(commandName)
                 .requires(sender -> sender.getSender().hasPermission(
                         Objects.requireNonNull(plugin.getConfig().getString("commands.aquecer.permission"))
-                ))
-                .executes(AquecerCommand::execute)
-                .build();
+                )).executes(AquecerCommand::execute).build();
     }
 }

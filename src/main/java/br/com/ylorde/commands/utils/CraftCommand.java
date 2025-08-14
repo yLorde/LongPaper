@@ -35,9 +35,8 @@ public class CraftCommand {
                 player.playSound(player, Objects.requireNonNull(plugin.getConfig().getString("commands.config.openSound")), 1,1 );
             }
 
-            Inventory inventory = Bukkit.createInventory(player, InventoryType.WORKBENCH);
+            player.openWorkbench(player.getLocation(), true);
 
-            player.openInventory(inventory);
             player.sendMessage(convertToColoredText.convert(
                     Objects.requireNonNull(plugin.getConfig().getString("commands.craft.onUseMessage"))
             ));
