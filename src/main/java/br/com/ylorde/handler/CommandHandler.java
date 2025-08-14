@@ -1,10 +1,13 @@
 package br.com.ylorde.handler;
 
 import br.com.ylorde.Main;
-import br.com.ylorde.handler.commands.AquecerCMD;
-import br.com.ylorde.handler.commands.LanternaCMD;
-import br.com.ylorde.handler.commands.LixeiraCMD;
-import br.com.ylorde.handler.commands.ReloadConfigCMD;
+import br.com.ylorde.handler.commands.admin.ReloadConfigCMD;
+import br.com.ylorde.handler.commands.player.AquecerCMD;
+import br.com.ylorde.handler.commands.player.CustomRecipesCMD;
+import br.com.ylorde.handler.commands.player.LanternaCMD;
+import br.com.ylorde.handler.commands.player.LixeiraCMD;
+import br.com.ylorde.handler.commands.utils.BigornaCMD;
+import br.com.ylorde.handler.commands.utils.CraftCMD;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 
 public record CommandHandler(Main plugin) {
@@ -21,6 +24,15 @@ public record CommandHandler(Main plugin) {
 
             if (plugin.getConfig().getBoolean("commands.lixeira.enabled"))
                 commands.registrar().register(new LixeiraCMD(plugin).build());
+
+            if (plugin.getConfig().getBoolean("commands.customRecipes.enabled"))
+                commands.registrar().register(new CustomRecipesCMD(plugin).build());
+
+            if (plugin.getConfig().getBoolean("commands.craft.enabled"))
+                commands.registrar().register(new CraftCMD(plugin).build());
+
+            if (plugin.getConfig().getBoolean("commands.bigorna.enabled"))
+                commands.registrar().register(new BigornaCMD(plugin).build());
         });
     }
 }

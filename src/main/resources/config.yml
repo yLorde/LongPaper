@@ -45,6 +45,57 @@ commands:
     openSound: entity.experience_orb.pickup
     closeSound: block.anvil.place
 
+  craft:
+    enabled: true
+    permission: longpaper.commands.utils.craft
+    onUseMessage: "&aVocê abriu sua mesa de trabalho virtual"
+
+  bigorna:
+    enabled: true
+    permission: longpaper.commands.utils.bigorna
+    onUseMessage: "&avocê abriu sua bigorna virtual"
+
+  customRecipes:
+    enabled: true
+    craft:
+      onUseMessage: "&aVoce abriu a receita customizadas"
+      interfaceTitle: "&aReceitas"
+      permission: longpaper.commands.player.customrecipes.craft
+      list:
+
+    furnace:
+      onUseMessage: "&aVoce abriu a receita customizadas"
+      interfaceTitle: "&0Receitas Customizadas"
+      permission: longpaper.commands.player.customrecipes.furnace
+      list:
+        0:
+          material: BREAD
+          name: "&3Pão quente"
+          effects:
+          lore:
+            - "Ao comer você recebe 5 segundos de regeneração"
+
+        1:
+          material: BAKED_POTATO
+          name: "&3Batata Frita"
+          effects:
+          lore:
+            - "Pão quentinho feito no forno"
+            - "Ao comer você ganha 15 segundos de velocidade"
+
+        2:
+          material: CHAIN
+          name: "&3Corrente Derretida"
+          effects:
+          lore:
+            - "Ferro recuperado de uma corrente"
+
+        3:
+          material: LANTERN
+          name: "&3Lanterna elétrica"
+          lore:
+            - "Recebido ao derreter &ex3 Tochas de Redstone &5"
+
   msg:
     enabled: true
     permission: longpaper.commands.player.msg
@@ -77,7 +128,7 @@ commands:
     customItemsInsufficientMessage: "&cItens insuficientes, você precisa de &ex%amount &cdeste item para fazer &e%recipeName"
     custom:
       WHEAT:
-        recipeName: "Pão Quente"
+        recipeName: "&3Pão Quente"
         message: "&aVocê assou trigo e recebeu pão"
         amount: 3
         result: BREAD
@@ -85,8 +136,9 @@ commands:
         lore:
           - "Pão quentinho feito no forno"
           - "Ao comer você ganha 15 segundos de velocidade"
+
       POTATO:
-        recipeName: "Batata Frita"
+        recipeName: "&3Batata Frita"
         message: "&aVocê assou batata e fez uma deliciosa batata frita."
         amount: 1
         result: BAKED_POTATO
@@ -94,6 +146,16 @@ commands:
         lore:
           - "Batata Frita"
           - "Nham Nham, tragam mais catchup!"
+
+      CHAIN:
+        recipeName: "&3Corrente Derretida"
+        message: "&aVoce derreteu uma corrente e obteve os materiais de volta."
+        amount: 1
+        result: IRON_NUGGET
+        resultAmount: 11
+        lore:
+          - "Materiais recuperados de uma corrente"
+
     items:
       COAL_ORE: COAL
       DEEPSLATE_COAL_ORE: COAL

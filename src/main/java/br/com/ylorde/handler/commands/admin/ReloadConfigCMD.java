@@ -1,4 +1,4 @@
-package br.com.ylorde.handler.commands;
+package br.com.ylorde.handler.commands.admin;
 
 import br.com.ylorde.Main;
 import br.com.ylorde.commands.admin.ReloadConfigCommand;

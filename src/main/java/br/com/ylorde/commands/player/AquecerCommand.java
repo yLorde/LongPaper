@@ -9,8 +9,8 @@ import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -72,7 +72,17 @@ public class AquecerCommand {
                         Material.valueOf(result), resultAmount
                 );
 
-                newCustomItem.setLore(lore);
+                ItemMeta meta = newCustomItem.getItemMeta();
+
+                meta.setDisplayName(convertToColoredText.convert(recipeName));
+                if (!lore.isEmpty()) {
+                    List<String> coloredLore = lore.stream()
+                            .map(convertToColoredText::convert)
+                            .toList();
+                    meta.setLore(coloredLore);
+                }
+
+                newCustomItem.setItemMeta(meta);
 
                 player.getItemInHand().subtract(amount);
                 player.give(newCustomItem);
