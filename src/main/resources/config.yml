@@ -47,28 +47,16 @@ commands:
 
   craft:
     enabled: true
-    aliases:
-      enabled: false
-      aliases: ""
-      useOnlyAliases: false
     permission: longpaper.commands.utils.craft
     onUseMessage: "&aVocê abriu sua mesa de trabalho virtual"
 
   bigorna:
     enabled: true
-    aliases:
-      enabled: false
-      aliases: "anvil"
-      useOnlyAliases: false
     permission: longpaper.commands.utils.bigorna
     onUseMessage: "&avocê abriu sua bigorna virtual"
 
   customRecipes:
     enabled: true
-    aliases:
-      enabled: true
-      aliases: "cr"
-      useOnlyAliases: false
     craft:
       onUseMessage: "&aVoce abriu a receita customizadas"
       interfaceTitle: "&aReceitas"
@@ -82,6 +70,9 @@ commands:
       list:
         0:
           material: BREAD
+          recipe:
+            input: BREAD
+            output: BREAD
           name: "&3Pão quente"
           effects:
           lore:
@@ -89,60 +80,60 @@ commands:
 
         1:
           material: BAKED_POTATO
+          recipe:
+            input: POTATO
+            output: BAKED_POTATO
           name: "&3Batata Frita"
-          effects:
           lore:
             - "Pão quentinho feito no forno"
             - "Ao comer você ganha 15 segundos de velocidade"
 
         2:
           material: CHAIN
+          recipe:
+            input: CHAIN
+            output: IRON_NUGGET
           name: "&3Corrente Derretida"
-          effects:
           lore:
             - "Ferro recuperado de uma corrente"
 
         3:
           material: LANTERN
+          recipe:
+            input: REDSTONE_TORCH
+            output: LANTERN
           name: "&3Lanterna elétrica"
           lore:
             - "Recebido ao derreter &ex3 Tochas de Redstone &5"
 
+        4:
+          material: LEAF_LITTER
+          recipe:
+            input: OAK_LEAVES
+            output: LEAF_LITTER
+          name: "&3Folhas secas"
+          lore:
+            - "Seque algumas folhas e receba uma pilha de folhas secas"
+
   msg:
     enabled: true
-    aliases:
-      enabled: false
-      aliases: ""
-      useOnlyAliases: false
     permission: longpaper.commands.player.msg
     sender: "&bVocê &a-> &e%recipient &f: &7%message_content"
     recipient: "&b%sender &a-> &eVocê &f: &7%message_content"
 
   lanterna:
     enabled: true
-    aliases:
-      enabled: false
-      aliases: "rc"
-      useOnlyAliases: false
     permission: longpaper.commands.player.lanterna
     onEnableMessage: "&aVocê ligou sua lanterna!"
     onDisableMessage: "&cVocê desativou sua lanterna!"
 
   reloadConfig:
     enabled: true
-    aliases:
-      enabled: true
-      aliases: "rc"
-      useOnlyAliases: false
     permission: longpaper.commands.admin.reloadconfig
     onUseMessage: "&aAs configurações do &6config.yml &aforam recarregadas com sucesso!"
 
   lixeira:
     enabled: true
-    aliases:
-      enabled: true
-      aliases: "trash"
-      useOnlyAliases: false
     permission: longpaper.commands.player.lixeira
     onUseMessage: "&aVocê abriu sua lixeira"
     interfaceTitle: "&cLixeira"
@@ -150,10 +141,6 @@ commands:
 
   aquecer:
     enabled: true
-    aliases:
-      enabled: true
-      aliases: "smelt"
-      useOnlyAliases: false
     permission: longpaper.commands.player.aquecer
     onUseMessage: "&aVocê esquentou &e&lx%amount &aitens"
     invalidItemMessage: "&cVocê não está segurando um item válido!"

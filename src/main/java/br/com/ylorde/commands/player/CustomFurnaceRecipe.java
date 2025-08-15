@@ -1,5 +1,6 @@
 package br.com.ylorde.commands.player;
 
+import br.com.ylorde.holders.CRIFurnace;
 import br.com.ylorde.utils.Console;
 import br.com.ylorde.utils.ConvertToColoredText;
 import com.mojang.brigadier.Command;
@@ -55,11 +56,8 @@ public class CustomFurnaceRecipe {
             if (list.size() > 36) slots = 45;
             if (list.size() > 45) slots = 54;
 
-            Inventory menu = Bukkit.createInventory(
-                    player,
-                    slots,
-                    Objects.requireNonNull(plugin.getConfig().getString("commands.customRecipes.furnace.interfaceTitle"))
-            );
+            CRIFurnace gui = new CRIFurnace(slots, Objects.requireNonNull(plugin.getConfig().getString("commands.customRecipes.furnace.interfaceTitle")));
+            Inventory menu = gui.getInventory();
 
             for (int i = 0; i < list.size() + 1; i++) {
                 String materialA = plugin.getConfig().getString("commands.customRecipes.furnace.list." + i + ".material");
