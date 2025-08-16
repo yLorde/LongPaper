@@ -12,4 +12,8 @@ public class Console {
                 new ConvertToColoredText().convert(message)
         );
     }
+
+    public void sendCommand(String command) {
+        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+    }
 }

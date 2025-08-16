@@ -46,6 +46,17 @@ public class AquecerCommand {
                 return Command.SINGLE_SUCCESS;
             }
 
+            if (handItem.getItemMeta().hasCustomModelData()) {
+                if (plugin.getConfig().getBoolean("commands.config.soundOnUse")) {
+                    player.playSound(player, Objects.requireNonNull(plugin.getConfig().getString("commands.config.closeSound")), 1,1);
+                };
+
+                player.sendMessage(convertToColoredText.convert(
+                        Objects.requireNonNull(plugin.getConfig().getString("commands.aquecer.invalidItemMessage"))
+                ));
+                return Command.SINGLE_SUCCESS;
+            }
+
             String itemName = handItem.getType().name();
             String resultItem = plugin.getConfig().getString("commands.aquecer.items."+itemName);
             String customItem = plugin.getConfig().getString("commands.aquecer.custom."+itemName);
@@ -84,6 +95,10 @@ public class AquecerCommand {
 
                 newCustomItem.setItemMeta(meta);
 
+                if (plugin.getConfig().getBoolean("commands.aquecer.enableSound")) {
+                    player.playSound(player, Objects.requireNonNull(plugin.getConfig().getString("commands.aquecer.sound")), 1,1);
+                }
+
                 player.getItemInHand().subtract(amount);
                 player.give(newCustomItem);
 
@@ -93,8 +108,7 @@ public class AquecerCommand {
                 return Command.SINGLE_SUCCESS;
             }
 
-            if (resultItem == null)
-            {
+            if (resultItem == null) {
                 if (plugin.getConfig().getBoolean("commands.config.soundOnUse")) {
                     player.playSound(player, Objects.requireNonNull(plugin.getConfig().getString("commands.config.closeSound")), 1,1);
                 }
@@ -118,8 +132,8 @@ public class AquecerCommand {
             player.getItemInHand().subtract(itemSize);
             player.setItemInHand(smeltItem);
 
-            if (plugin.getConfig().getBoolean("commands.config.soundOnUse")) {
-                player.playSound(player, Objects.requireNonNull(plugin.getConfig().getString("commands.config.openSound")), 1,1);
+            if (plugin.getConfig().getBoolean("commands.aquecer.enableSound")) {
+                player.playSound(player, Objects.requireNonNull(plugin.getConfig().getString("commands.aquecer.sound")), 1,1);
             }
         }
 

@@ -141,6 +141,8 @@ commands:
 
   aquecer:
     enabled: true
+    enableSound: true
+    sound: block.lava.extinguish
     permission: longpaper.commands.player.aquecer
     onUseMessage: "&aVocê esquentou &e&lx%amount &aitens"
     invalidItemMessage: "&cVocê não está segurando um item válido!"
@@ -198,3 +200,13 @@ commands:
       RAW_COPPER: COPPER_INGOT
       RAW_GOLD: GOLD_INGOT
       ANCIENT_DEBRIS: NETHERITE_SCRAP
+
+    customItems:
+      permission: longpaper.commands.player.aquecer.customitems
+      onErrorMessage: "&cVocê não está segurando um item customizado válido!"
+      list:
+        10000:
+          material: RAW_IRON
+          multiplier: 1
+          onUseMessage: "&aVocê assou &ex%amount &aRaw Allthemodium e obteve &cAllthemodium ingot"
+          consoleCommand: "iagive %player_nickname allthemodium:allthemodiumingot %amount"
