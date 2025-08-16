@@ -17,7 +17,7 @@ public record CommandHandler(Main plugin) {
                 commands.registrar().register(new LanternaCMD(plugin).build("lanterna"));
 
             if (plugin.getConfig().getBoolean("commands.reloadConfig.enabled"))
-                commands.registrar().register(new ReloadConfigCMD(plugin).buid("reloadconfig"));
+                commands.registrar().register(new ReloadConfigCMD(plugin).buid("reloadConfig"));
 
             if (plugin.getConfig().getBoolean("commands.aquecer.enabled"))
                 commands.registrar().register(new AquecerCMD(plugin).build("aquecer"));
